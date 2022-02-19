@@ -14,16 +14,14 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import socketserver as SocketServer
 import re
-import string
 import socket
 #import threading
-import sys
+# import sys
 import time
 import logging
+from socketserver import BaseRequestHandler
 
-HOST, PORT = '0.0.0.0', 5060
 rx_register = re.compile("^REGISTER")
 rx_invite = re.compile("^INVITE")
 rx_ack = re.compile("^ACK")
@@ -83,7 +81,7 @@ def quotechars( chars ):
 def showtime():
     logging.debug(time.strftime("(%H:%M:%S)", time.localtime()))
 
-class UDPHandler(SocketServer.BaseRequestHandler):   
+class UDPHandler(BaseRequestHandler):   
     
     def debugRegister(self):
         logging.debug("*** REGISTRAR ***")
@@ -404,7 +402,6 @@ class UDPHandler(SocketServer.BaseRequestHandler):
     def handle(self):
         #socket.setdefaulttimeout(120)
         data = self.request[0].decode("utf-8")
-        print(data)
         self.data = data.split("\r\n")
         self.socket = self.request[1]
         request_uri = self.data[0]
@@ -422,20 +419,10 @@ class UDPHandler(SocketServer.BaseRequestHandler):
                 hexdump(data,' ',16)
                 logging.warning("---")
 
-if __name__ == "__main__":
-    print("SIP proxy modified by Sebastian Petrik to run on python 3.9, works with zoiper")    
-    logging.basicConfig(format='%(asctime)s:%(levelname)s:%(message)s',filename='proxy.log',level=logging.INFO,datefmt='%H:%M:%S')
-    logging.info(time.strftime("%a, %d %b %Y %H:%M:%S ", time.localtime()))
-    hostname = socket.gethostname()
-    logging.info(hostname)
-    ipaddress = socket.gethostbyname(hostname)
-    if ipaddress == "127.0.0.1":
-        ipaddress = sys.argv[1]
-    logging.info(ipaddress)
-    recordroute = "Record-Route: <sip:%s:%d;lr>" % (ipaddress,PORT)
-    topvia = "Via: SIP/2.0/UDP %s:%d" % (ipaddress,PORT)
-    server = SocketServer.UDPServer((HOST, PORT), UDPHandler)
-    print("ip is ", ipaddress)
-    print("port is ", PORT)
-    print("starting udp server - proxy")
-    server.serve_forever()
+def init_module(ip, port):
+    logging.basicConfig(format='%(asctime)s:%(levelname)s:%(message)s',filename='proxy.log',level=logging.DEBUG,datefmt='%H:%M:%S')
+    
+    global ipaddress, recordroute, topvia
+    ipaddress = ip
+    recordroute = "Record-Route: <sip:%s:%d;lr>" % (ipaddress,port)
+    topvia = "Via: SIP/2.0/UDP %s:%d" % (ipaddress,port)
