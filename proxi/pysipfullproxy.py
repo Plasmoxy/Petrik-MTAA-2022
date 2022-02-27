@@ -77,6 +77,9 @@ STATUS_406 = "406 Neakceptovatelne"
 STATUS_400 = "400 Zla poziadavka"
 STATUS_480 = "480 Nedostupny"
 
+def log(msg):
+    print(msg)
+
 def hexdump( chars, sep, width ):
     while chars:
         line = chars[:width]
@@ -274,6 +277,11 @@ class UDPHandler(BaseRequestHandler):
         logging.debug("Client address: %s:%s" % self.client_address)
         logging.debug("Expires= %d" % expires)
         registrar[fromm]=[contact,self.socket,self.client_address,validity]
+        log(f"\n=== Register from {fromm} with contact {contact}.")
+        log(f"Registrar:")
+        for key in registrar.keys():
+            log("%s -> %s" % (key,registrar[key][0]))
+        
         self.debugRegister()
         self.sendResponse(STATUS_200)
         
