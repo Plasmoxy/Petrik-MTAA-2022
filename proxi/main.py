@@ -15,11 +15,19 @@ Original license: gpl.txt
 import pysipfullproxy
 import sys
 from socketserver import UDPServer
+import socket
 
 if __name__ == "__main__":
-    print("SIP proxy modified by Sebastian Petrik to run on python 3.9, works with zoiper")
+    print("=== Assignment 1 from MTAA 27.2.2022 Sebastian Petrik ===")
+    print("SIP proxy modified to run on python 3.9 with improvements.")
     
-    ip = sys.argv[1]
+    hostn, n, ips = socket.gethostbyname_ex(socket.gethostname())
+    print("Select IP for proxy (enter number): ")
+    for i in range(len(ips)):
+        print(f"{i} = {ips[i]}")
+    ipidx = int(input("Enter choice number: "))
+    ip = ips[ipidx]
+    
     port = 5060
     
     print("ip is ", ip)
@@ -28,5 +36,5 @@ if __name__ == "__main__":
     pysipfullproxy.init_module(ip, port)
     server = UDPServer((ip, port), pysipfullproxy.UDPHandler)
     
-    print("starting udp server - proxy")
+    print("Starting udp server with proxy handler.")
     server.serve_forever()
