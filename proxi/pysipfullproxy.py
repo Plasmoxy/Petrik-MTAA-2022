@@ -14,6 +14,9 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# Modified by Sebastian Petrik on 27.2.2022
+# Assignment 1 from MTAA, FIIT STU 2022
+
 import re
 # import socket
 # import threading
@@ -68,7 +71,7 @@ rx_addr = re.compile("sip:([^ ;>$]*)")
 rx_code = re.compile("^SIP/2.0 ([^ ]*)")
 # rx_invalid = re.compile("^192\.168")
 # rx_invalid2 = re.compile("^10\.")
-#rx_cseq = re.compile("^CSeq:")
+rx_cseq = re.compile("^CSeq: (.*) (.*)")
 rx_callid = re.compile("Call-ID: (.*)$")
 #rx_rr = re.compile("^Record-Route:")
 rx_request_uri = re.compile("^([^ ]*) sip:([^ ]*) SIP/2.0")
@@ -350,7 +353,7 @@ class UDPHandler(BaseRequestHandler):
                 callid = self.getCallId(data)
                 if callid:
                     diary.info('')
-                    diary.info(f"<Call {callid}> New call (INVITE)")
+                    diary.info(f"<Call {callid}> Novy hovor (INVITE)")
                     diary.info(matchLine(data, rx_from))
                     diary.info(matchLine(data, rx_to))
                 
@@ -401,7 +404,7 @@ class UDPHandler(BaseRequestHandler):
                 socket.sendto(text.encode("utf-8"), claddr)
                 showtime()
                 logging.info("<<< %s" % data[0])
-                logging.debug("---\n<< server send [%d]:\n%s\n---" % (len(text),text))    
+                logging.debug("---\n<< server send [%d]:\n%s\n---" % (len(text),text))      
             else:
                 self.sendResponse(STATUS_406)
         else:
@@ -415,14 +418,23 @@ class UDPHandler(BaseRequestHandler):
         code = self.getCode()
         callid = self.getCallId(self.data)
         
-        if code == '200': msg = 'VYBAVENE OK'
-        if code == '100': msg = 'Skusam'
-        if code == '180':
+        if code == '200':
+            msg = 'VYBAVENE OK'
+            cseq_method = matchLine(self.data, rx_cseq, 2)
+            if cseq_method == 'INVITE':
+                diary.info(f"<Call {callid}> Hovor zdvihnuty")
+            elif cseq_method == 'BYE':
+                diary.info(f"<Call {callid}> Hovor ukonceny")
+        elif code == '100': msg = 'Skusam'
+        elif code == '180':
             msg = 'Zvonim'
-            diary.info(f"<Call {callid}> Ringing...")
-        if code == '603':
+            diary.info(f"<Call {callid}> Zvonim...")
+        elif code == '603':
             msg = 'Hovor odmietnuty'
-            diary.info(f"<Call {callid}> Call was refused..")
+            diary.info(f"<Call {callid}> Hovor odmietnuty")
+        elif code == '486':
+            msg = 'Obsadene'
+            diary.info(f"<Call {callid}> Hovor odmietnuty - obsadene")
         
         
         if len(origin) > 0:

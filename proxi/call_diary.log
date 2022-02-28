@@ -1,4 +1,37 @@
-(14:33:39) 
-(14:33:39) <> Register from bob@10.10.15.27 with contact 10.10.15.27.
-(14:33:39) Registrar:
-(14:33:39) bob@10.10.15.27 -> 10.10.15.27
+(14:51:04) 
+(14:51:04) <> Register from bob@10.10.15.27 with contact 10.10.15.27.
+(14:51:04) Registrar:
+(14:51:04) bob@10.10.15.27 -> 10.10.15.27
+(14:51:04) 
+(14:51:04) <> Register from bob@10.10.15.27 with contact 10.10.28.41:37909.
+(14:51:04) Registrar:
+(14:51:04) bob@10.10.15.27 -> 10.10.28.41:37909
+(14:51:06) 
+(14:51:06) <> Register from mac@10.10.15.27 with contact 10.10.15.27.
+(14:51:06) Registrar:
+(14:51:06) bob@10.10.15.27 -> 10.10.28.41:37909
+(14:51:06) mac@10.10.15.27 -> 10.10.15.27
+(14:51:15) 
+(14:51:15) <Call Wrf72NYoGs> Novy hovor (INVITE)
+(14:51:15) From: <sip:bob@10.10.15.27>;tag=H8AvK6WhP
+(14:51:15) To: sip:mac@10.10.15.27
+(14:51:15) <Call Wrf72NYoGs> Zvonim...
+(14:51:46) <Call Wrf72NYoGs> Hovor odmietnuty - obsadene
+(14:52:30) 
+(14:52:30) <Call ruOEaeFZn~> Novy hovor (INVITE)
+(14:52:30) From: <sip:mac@10.10.15.27>;tag=8J~MBSUe6
+(14:52:30) To: sip:bob@10.10.15.27
+(14:52:31) <Call ruOEaeFZn~> Zvonim...
+(14:52:33) <Call ruOEaeFZn~> Hovor zdvihnuty
+(14:52:34) <Call ruOEaeFZn~> Hovor zdvihnuty
+(14:52:45) 
+(14:52:45) <Call ruOEaeFZn~> Novy hovor (INVITE)
+(14:52:45) From: <sip:mac@10.10.15.27>;tag=8J~MBSUe6
+(14:52:45) To: <sip:bob@10.10.15.27>;tag=GCaMF4p
+(14:52:45) 
+(14:52:45) <Call DxLZOO4h6~> Novy hovor (INVITE)
+(14:52:45) From: <sip:mac@10.10.15.27>;tag=MeBxvhCW-
+(14:52:45) To: sip:bob@10.10.15.27
+(14:52:45) <Call ruOEaeFZn~> Hovor zdvihnuty
+(14:52:45) <Call DxLZOO4h6~> Hovor odmietnuty - obsadene
+(14:53:02) <Call ruOEaeFZn~> Hovor ukonceny
