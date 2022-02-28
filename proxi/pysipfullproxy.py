@@ -67,7 +67,7 @@ rx_code = re.compile("^SIP/2.0 ([^ ]*)")
 # rx_invalid = re.compile("^192\.168")
 # rx_invalid2 = re.compile("^10\.")
 #rx_cseq = re.compile("^CSeq:")
-#rx_callid = re.compile("Call-ID: (.*)$")
+rx_callid = re.compile("Call-ID: (.*)$")
 #rx_rr = re.compile("^Record-Route:")
 rx_request_uri = re.compile("^([^ ]*) sip:([^ ]*) SIP/2.0")
 rx_route = re.compile("^Route:")
@@ -107,7 +107,35 @@ def quotechars( chars ):
 def showtime():
     logging.debug(time.strftime("(%H:%M:%S)", time.localtime()))
 
-class UDPHandler(BaseRequestHandler):   
+# get first match from lines array (data) and return group
+def matchLine(data, rx, group=None):
+    for line in data:
+        match = rx.search(line)
+        if match:
+            if group:
+                return match.group(group)
+            else:
+                return match.string
+    return None
+
+class UDPHandler(BaseRequestHandler):
+    
+   
+    
+    def getCode(self):
+        return rx_code.search(self.data[0]).group(1)
+    
+    # custom status kody po slovensky
+    def getCustomStatus(self, code):
+        msg = ''
+        
+        if code == '200': msg = 'VYBAVENE OK'
+        if code == '100': msg = 'Skusam'
+        if code == '180': msg = 'Zvonim'
+        if code == '603': msg = 'Hovor odmietnuty'
+        
+        
+        return code, msg
     
     def debugRegister(self):
         logging.debug("*** REGISTRAR ***")
@@ -143,7 +171,7 @@ class UDPHandler(BaseRequestHandler):
                 if md:
                     branch=md.group(1)
                     via = "%s;branch=%sm" % (topvia, branch)
-                    data.append(via)
+                    # data.append(via) # FIX = this line added 2 Via in single datagram
                 # rport processing
                 if rx_rport.search(line):
                     text = "received=%s;rport=%d" % self.client_address
@@ -201,7 +229,7 @@ class UDPHandler(BaseRequestHandler):
         return origin
         
     def sendResponse(self,code):
-        request_uri = "SIP/2.0 " + code
+        request_uri = f"SIP/2.0 {code}"
         self.data[0]= request_uri
         index = 0
         data = []
@@ -326,6 +354,15 @@ class UDPHandler(BaseRequestHandler):
                 showtime()
                 logging.info("<<< %s" % data[0])
                 logging.debug("---\n<< server send [%d]:\n%s\n---" % (len(text),text))
+                
+                # log call in diary
+                callid = matchLine(data, rx_callid, 1)
+                if callid:
+                    diary.info('')
+                    diary.info(f"<Call {callid}> NEW CALL (invite)")
+                    diary.info(matchLine(data, rx_from))
+                    diary.info(matchLine(data, rx_to))
+                
             else:
                 self.sendResponse(STATUS_480)
         else:
@@ -381,12 +418,15 @@ class UDPHandler(BaseRequestHandler):
                 
     def processCode(self):
         origin = self.getOrigin()
+        status, statusMsg = self.getCustomStatus(self.getCode())
+        
         if len(origin) > 0:
             logging.debug("origin %s" % origin)
             if origin in registrar:
                 socket,claddr = self.getSocketInfo(origin)
                 self.data = self.removeRouteHeader()
                 data = self.removeTopVia()
+                data[0] = f"SIP/2.0 {status} {statusMsg}" # change header
                 text = "\r\n".join(data)
                 socket.sendto(text.encode("utf-8"),claddr)
                 showtime()
