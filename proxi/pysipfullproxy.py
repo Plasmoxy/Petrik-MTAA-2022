@@ -16,11 +16,28 @@
 
 import re
 # import socket
-#import threading
-# import sys
+# import threading
+import sys
 import time
-import logging
+import logging as logging_lib
 from socketserver import BaseRequestHandler
+
+# setup multiple logging services
+formatter = logging_lib.Formatter('(%(asctime)s) %(message)s', datefmt="%H:%M")
+def create_logger(name, file, level=logging_lib.DEBUG):
+    handler = logging_lib.FileHandler(file, 'w')        
+    handler.setFormatter(formatter)
+
+    logger = logging_lib.getLogger(name)
+    logger.setLevel(level)
+    logger.addHandler(handler)
+
+    return logger
+
+# create loggers
+logging = create_logger('Pysip full proxy', 'pysipfullproxy.log')
+diary = create_logger('MTAA z2 call diary', 'call_diary.log')
+diary.addHandler(logging_lib.StreamHandler(sys.stdout))
 
 rx_register = re.compile("^REGISTER")
 rx_invite = re.compile("^INVITE")
@@ -76,9 +93,6 @@ STATUS_488 = "488 Tu Neakceptovatelne"
 STATUS_406 = "406 Neakceptovatelne"
 STATUS_400 = "400 Zla poziadavka"
 STATUS_480 = "480 Nedostupny"
-
-def log(msg):
-    print(msg)
 
 def hexdump( chars, sep, width ):
     while chars:
@@ -277,10 +291,10 @@ class UDPHandler(BaseRequestHandler):
         logging.debug("Client address: %s:%s" % self.client_address)
         logging.debug("Expires= %d" % expires)
         registrar[fromm]=[contact,self.socket,self.client_address,validity]
-        log(f"\n=== Register from {fromm} with contact {contact}.")
-        log(f"Registrar:")
+        diary.info(f"<> Register from {fromm} with contact {contact}.")
+        diary.info(f"Registrar:")
         for key in registrar.keys():
-            log("%s -> %s" % (key,registrar[key][0]))
+            diary.info("%s -> %s" % (key,registrar[key][0]))
         
         self.debugRegister()
         self.sendResponse(STATUS_200)
@@ -436,9 +450,8 @@ class UDPHandler(BaseRequestHandler):
                 hexdump(data,' ',16)
                 logging.warning("---")
 
+# basic initialisation of module
 def init_module(ip, port):
-    logging.basicConfig(format='%(asctime)s:%(levelname)s:%(message)s',filename='proxy.log',level=logging.DEBUG,datefmt='%H:%M:%S')
-    
     global ipaddress, recordroute, topvia
     ipaddress = ip
     recordroute = "Record-Route: <sip:%s:%d;lr>" % (ipaddress,port)

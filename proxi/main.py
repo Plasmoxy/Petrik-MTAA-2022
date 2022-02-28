@@ -23,15 +23,19 @@ if __name__ == "__main__":
     
     hostn, n, ips = socket.gethostbyname_ex(socket.gethostname())
     print("Select IP for proxy (enter number): ")
+    print("0 = Enter ip manually")
     for i in range(len(ips)):
-        print(f"{i} = {ips[i]}")
+        print(f"{i+1} = {ips[i]}")
     ipidx = int(input("Enter choice number: "))
-    ip = ips[ipidx]
+    if (ipidx == 0):
+        ip = input("Enter IP: ")
+    else:
+        ip = ips[ipidx-1]
     
     port = 5060
     
-    print("ip is ", ip)
-    print("port is ", port)
+    print("ip is", ip)
+    print("port is", port)
     
     pysipfullproxy.init_module(ip, port)
     server = UDPServer((ip, port), pysipfullproxy.UDPHandler)

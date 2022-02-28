@@ -1,0 +1,104 @@
+(10:57) (10:57:42)
+(10:57) >>> REGISTER sip:10.10.15.27 SIP/2.0
+(10:57) ---
+>> server received [642]:
+REGISTER sip:10.10.15.27 SIP/2.0
+Via: SIP/2.0/UDP 10.10.15.27:56834;branch=z9hG4bK.tflAwtSE4;rport
+From: <sip:mac@10.10.15.27>;tag=ZWaRu2PuD
+To: sip:mac@10.10.15.27
+CSeq: 37 REGISTER
+Call-ID: XC7pot6sgt
+Max-Forwards: 70
+Supported: replaces, outbound, gruu
+Accept: application/sdp
+Accept: text/plain
+Accept: application/vnd.gsma.rcs-ft-http+xml
+Contact: <sip:mac@10.10.15.27:56834;transport=udp>;message-expires=604800;+sip.instance="<urn:uuid:08ee941e-4a90-00e8-a4f3-22b732a89006>";+org.linphone.specs="ephemeral,groupchat/1.1,lime"
+Expires: 600
+User-Agent: Linphone Desktop/4.3.2 (macOS 10.16, Qt 5.15.2) LinphoneCore/5.0.49
+
+
+---
+(10:57) Received from 10.10.15.27:56834
+(10:57) REGKEYS dict_keys([])
+(10:57) From: mac@10.10.15.27 - Contact: 10.10.15.27:56834
+(10:57) Client address: 10.10.15.27:56834
+(10:57) Expires= 604800
+(10:57) *** REGISTRAR ***
+(10:57) *****************
+(10:57) mac@10.10.15.27 -> 10.10.15.27:56834
+(10:57) *****************
+(10:57) (10:57:42)
+(10:57) <<< SIP/2.0 200 VYBAVENE OK
+(10:57) ---
+<< server send [671]:
+SIP/2.0 200 VYBAVENE OK
+Via: SIP/2.0/UDP 10.10.15.27:56834;branch=z9hG4bK.tflAwtSE4;received=10.10.15.27;rport=56834
+From: <sip:mac@10.10.15.27>;tag=ZWaRu2PuD
+To: sip:mac@10.10.15.27;tag=123456
+CSeq: 37 REGISTER
+Call-ID: XC7pot6sgt
+Max-Forwards: 70
+Supported: replaces, outbound, gruu
+Accept: application/sdp
+Accept: text/plain
+Accept: application/vnd.gsma.rcs-ft-http+xml
+Contact: <sip:mac@10.10.15.27:56834;transport=udp>;message-expires=604800;+sip.instance="<urn:uuid:08ee941e-4a90-00e8-a4f3-22b732a89006>";+org.linphone.specs="ephemeral,groupchat/1.1,lime"
+Expires: 600
+User-Agent: Linphone Desktop/4.3.2 (macOS 10.16, Qt 5.15.2) LinphoneCore/5.0.49
+
+
+---
+(10:57) (10:57:42)
+(10:57) >>> PUBLISH sip:mac@10.10.15.27 SIP/2.0
+(10:57) ---
+>> server received [926]:
+PUBLISH sip:mac@10.10.15.27 SIP/2.0
+Via: SIP/2.0/UDP 10.10.15.27:56834;branch=z9hG4bK.r042jykyM;rport
+From: <sip:mac@10.10.15.27>;tag=o2BFUByHY
+To: sip:mac@10.10.15.27
+CSeq: 20 PUBLISH
+Call-ID: YQ4RAA0dQy
+Max-Forwards: 70
+Supported: replaces, outbound, gruu
+Event: presence
+Content-Type: application/pidf+xml
+Content-Length: 489
+Expires: 600
+User-Agent: Linphone Desktop/4.3.2 (macOS 10.16, Qt 5.15.2) LinphoneCore/5.0.49
+
+<?xml version="1.0" encoding="UTF-8"?>
+<presence xmlns:dm="urn:ietf:params:xml:ns:pidf:data-model" xmlns:rpid="urn:ietf:params:xml:ns:pidf:rpid" xmlns:pidfonline="http://www.linphone.org/xsds/pidfonline.xsd" entity="sip:mac@10.10.15.27" xmlns="urn:ietf:params:xml:ns:pidf">
+ <tuple id="hobufs">
+  <status>
+   <basic>open</basic>
+   <pidfonline:online/>
+  </status>
+  <contact priority="0.8">sip:mac@10.10.15.27</contact>
+  <timestamp>2022-02-28T09:32:46Z</timestamp>
+ </tuple>
+</presence>
+
+---
+(10:57) Received from 10.10.15.27:56834
+(10:57) REGKEYS dict_keys(['mac@10.10.15.27'])
+(10:57) (10:57:42)
+(10:57) <<< SIP/2.0 200 VYBAVENE OK
+(10:57) ---
+<< server send [461]:
+SIP/2.0 200 VYBAVENE OK
+Via: SIP/2.0/UDP 10.10.15.27:56834;branch=z9hG4bK.r042jykyM;received=10.10.15.27;rport=56834
+From: <sip:mac@10.10.15.27>;tag=o2BFUByHY
+To: sip:mac@10.10.15.27;tag=123456
+CSeq: 20 PUBLISH
+Call-ID: YQ4RAA0dQy
+Max-Forwards: 70
+Supported: replaces, outbound, gruu
+Event: presence
+Content-Type: application/pidf+xml
+Content-Length: 0
+Expires: 600
+User-Agent: Linphone Desktop/4.3.2 (macOS 10.16, Qt 5.15.2) LinphoneCore/5.0.49
+
+
+---
