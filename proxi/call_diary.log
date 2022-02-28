@@ -1,16 +1,4 @@
-(14:09) 
-(14:09) <> Register from bob@10.10.15.27 with contact 10.10.15.27.
-(14:09) Registrar:
-(14:09) bob@10.10.15.27 -> 10.10.15.27
-(14:09) 
-(14:09) <> Register from bob@10.10.15.27 with contact 10.10.28.41:37909.
-(14:09) Registrar:
-(14:09) bob@10.10.15.27 -> 10.10.28.41:37909
-(14:09) 
-(14:09) <> Register from mac@10.10.15.27 with contact 10.10.15.27:53711.
-(14:09) Registrar:
-(14:09) bob@10.10.15.27 -> 10.10.28.41:37909
-(14:09) mac@10.10.15.27 -> 10.10.15.27:53711
-(14:09) <Call XWU82bJtn2> NEW CALL (invite)
-(14:09) From: From: <sip:bob@10.10.15.27>;tag=M0kWPYdIW
-(14:09) To: To: sip:mac@10.10.15.27
+(14:33:39) 
+(14:33:39) <> Register from bob@10.10.15.27 with contact 10.10.15.27.
+(14:33:39) Registrar:
+(14:33:39) bob@10.10.15.27 -> 10.10.15.27

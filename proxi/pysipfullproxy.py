@@ -23,7 +23,7 @@ import logging as logging_lib
 from socketserver import BaseRequestHandler
 
 # setup multiple logging services
-formatter = logging_lib.Formatter('(%(asctime)s) %(message)s', datefmt="%H:%M")
+formatter = logging_lib.Formatter('(%(asctime)s) %(message)s', datefmt="%H:%M:%S")
 def create_logger(name, file, level=logging_lib.DEBUG):
     handler = logging_lib.FileHandler(file, 'w')        
     handler.setFormatter(formatter)
@@ -37,7 +37,9 @@ def create_logger(name, file, level=logging_lib.DEBUG):
 # create loggers
 logging = create_logger('Pysip full proxy', 'pysipfullproxy.log')
 diary = create_logger('MTAA z2 call diary', 'call_diary.log')
-diary.addHandler(logging_lib.StreamHandler(sys.stdout))
+console_handler = logging_lib.StreamHandler(sys.stdout)
+console_handler.setFormatter(formatter)
+diary.addHandler(console_handler)
 
 rx_register = re.compile("^REGISTER")
 rx_invite = re.compile("^INVITE")
@@ -120,22 +122,11 @@ def matchLine(data, rx, group=None):
 
 class UDPHandler(BaseRequestHandler):
     
-   
+    def getCallId(self, data):
+        return matchLine(data, rx_callid, 1)
     
     def getCode(self):
         return rx_code.search(self.data[0]).group(1)
-    
-    # custom status kody po slovensky
-    def getCustomStatus(self, code):
-        msg = ''
-        
-        if code == '200': msg = 'VYBAVENE OK'
-        if code == '100': msg = 'Skusam'
-        if code == '180': msg = 'Zvonim'
-        if code == '603': msg = 'Hovor odmietnuty'
-        
-        
-        return code, msg
     
     def debugRegister(self):
         logging.debug("*** REGISTRAR ***")
@@ -356,10 +347,10 @@ class UDPHandler(BaseRequestHandler):
                 logging.debug("---\n<< server send [%d]:\n%s\n---" % (len(text),text))
                 
                 # log call in diary
-                callid = matchLine(data, rx_callid, 1)
+                callid = self.getCallId(data)
                 if callid:
                     diary.info('')
-                    diary.info(f"<Call {callid}> NEW CALL (invite)")
+                    diary.info(f"<Call {callid}> New call (INVITE)")
                     diary.info(matchLine(data, rx_from))
                     diary.info(matchLine(data, rx_to))
                 
@@ -418,7 +409,21 @@ class UDPHandler(BaseRequestHandler):
                 
     def processCode(self):
         origin = self.getOrigin()
-        status, statusMsg = self.getCustomStatus(self.getCode())
+        
+        # custom status codes rewrites
+        msg = ''
+        code = self.getCode()
+        callid = self.getCallId(self.data)
+        
+        if code == '200': msg = 'VYBAVENE OK'
+        if code == '100': msg = 'Skusam'
+        if code == '180':
+            msg = 'Zvonim'
+            diary.info(f"<Call {callid}> Ringing...")
+        if code == '603':
+            msg = 'Hovor odmietnuty'
+            diary.info(f"<Call {callid}> Call was refused..")
+        
         
         if len(origin) > 0:
             logging.debug("origin %s" % origin)
@@ -426,7 +431,7 @@ class UDPHandler(BaseRequestHandler):
                 socket,claddr = self.getSocketInfo(origin)
                 self.data = self.removeRouteHeader()
                 data = self.removeTopVia()
-                data[0] = f"SIP/2.0 {status} {statusMsg}" # change header
+                data[0] = f"SIP/2.0 {code} {msg}" # status header
                 text = "\r\n".join(data)
                 socket.sendto(text.encode("utf-8"),claddr)
                 showtime()
