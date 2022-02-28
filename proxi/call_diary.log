@@ -1,167 +1,48 @@
-(19:02:00) 
-(19:02:00) <> Register from bob@147.175.160.186 with contact 147.175.162.68:45582.
-(19:02:00) Registrar:
-(19:02:00) bob@147.175.160.186 -> 147.175.162.68:45582
-(19:02:49) 
-(19:02:49) <> Register from mac@147.175.160.186 with contact 147.175.160.186:62714.
-(19:02:49) Registrar:
-(19:02:49) bob@147.175.160.186 -> 147.175.162.68:45582
-(19:02:49) mac@147.175.160.186 -> 147.175.160.186:62714
-(19:02:55) 
-(19:02:55) <> Register from mac@147.175.160.186 with contact 147.175.160.186:62714.
-(19:02:55) Registrar:
-(19:02:55) bob@147.175.160.186 -> 147.175.162.68:45582
-(19:02:55) mac@147.175.160.186 -> 147.175.160.186:62714
-(19:03:07) 
-(19:03:07) <Call -SLO30nBfo> Novy hovor (INVITE)
-(19:03:07) From: <sip:bob@147.175.160.186>;tag=1rbmZTdob
-(19:03:07) To: sip:mac@147.175.160.186
-(19:03:08) <Call -SLO30nBfo> Zvonim...
-(19:03:24) <Call -SLO30nBfo> Hovor zdvihnuty
-(19:03:26) 
-(19:03:26) <Call -SLO30nBfo> Novy hovor (INVITE)
-(19:03:26) From: <sip:bob@147.175.160.186>;tag=1rbmZTdob
-(19:03:26) To: <sip:mac@147.175.160.186>;tag=x3LIlTq
-(19:03:26) <Call -SLO30nBfo> Hovor zdvihnuty
-(19:03:30) 
-(19:03:30) <Call -SLO30nBfo> Novy hovor (INVITE)
-(19:03:30) From: <sip:mac@147.175.160.186>;tag=x3LIlTq
-(19:03:30) To: <sip:bob@147.175.160.186>;tag=1rbmZTdob
-(19:03:32) <Call -SLO30nBfo> Hovor zdvihnuty
-(19:03:33) 
-(19:03:33) <Call -SLO30nBfo> Novy hovor (INVITE)
-(19:03:33) From: <sip:bob@147.175.160.186>;tag=1rbmZTdob
-(19:03:33) To: <sip:mac@147.175.160.186>;tag=x3LIlTq
-(19:03:33) <Call -SLO30nBfo> Hovor zdvihnuty
-(19:03:34) <Call -SLO30nBfo> Hovor zdvihnuty
-(19:03:41) 
-(19:03:41) <Call -SLO30nBfo> Novy hovor (INVITE)
-(19:03:41) From: <sip:mac@147.175.160.186>;tag=x3LIlTq
-(19:03:41) To: <sip:bob@147.175.160.186>;tag=1rbmZTdob
-(19:03:42) 
-(19:03:42) <Call -SLO30nBfo> Novy hovor (INVITE)
-(19:03:42) From: <sip:mac@147.175.160.186>;tag=x3LIlTq
-(19:03:42) To: <sip:bob@147.175.160.186>;tag=1rbmZTdob
-(19:03:43) 
-(19:03:43) <Call -SLO30nBfo> Novy hovor (INVITE)
-(19:03:43) From: <sip:mac@147.175.160.186>;tag=x3LIlTq
-(19:03:43) To: <sip:bob@147.175.160.186>;tag=1rbmZTdob
-(19:03:45) 
-(19:03:45) <Call -SLO30nBfo> Novy hovor (INVITE)
-(19:03:45) From: <sip:mac@147.175.160.186>;tag=x3LIlTq
-(19:03:45) To: <sip:bob@147.175.160.186>;tag=1rbmZTdob
-(19:03:49) 
-(19:03:49) <Call -SLO30nBfo> Novy hovor (INVITE)
-(19:03:49) From: <sip:mac@147.175.160.186>;tag=x3LIlTq
-(19:03:49) To: <sip:bob@147.175.160.186>;tag=1rbmZTdob
-(19:03:57) 
-(19:03:57) <Call -SLO30nBfo> Novy hovor (INVITE)
-(19:03:57) From: <sip:mac@147.175.160.186>;tag=x3LIlTq
-(19:03:57) To: <sip:bob@147.175.160.186>;tag=1rbmZTdob
-(19:04:10) 
-(19:04:10) <> Register from bob@147.175.160.186 with contact 84.245.120.65:45582.
-(19:04:10) Registrar:
-(19:04:10) bob@147.175.160.186 -> 84.245.120.65:45582
-(19:04:10) mac@147.175.160.186 -> 147.175.160.186:62714
-(19:04:13) 
-(19:04:13) <Call -SLO30nBfo> Novy hovor (INVITE)
-(19:04:13) From: <sip:mac@147.175.160.186>;tag=x3LIlTq
-(19:04:13) To: <sip:bob@147.175.160.186>;tag=1rbmZTdob
-(19:04:24) 
-(19:04:24) <> Register from mac@147.175.160.186 with contact 147.175.160.186.
-(19:04:24) Registrar:
-(19:04:24) bob@147.175.160.186 -> 84.245.120.65:45582
-(19:04:24) mac@147.175.160.186 -> 147.175.160.186
-(19:04:35) 
-(19:04:35) <> Register from mac@147.175.160.186 with contact 147.175.160.186:62714.
-(19:04:35) Registrar:
-(19:04:35) bob@147.175.160.186 -> 84.245.120.65:45582
-(19:04:35) mac@147.175.160.186 -> 147.175.160.186:62714
-(19:04:54) 
-(19:04:54) <Call e6Hg-HXTBf> Novy hovor (INVITE)
-(19:04:54) From: <sip:bob@147.175.160.186>;tag=IJaWUYg42
-(19:04:54) To: sip:mac@147.175.160.186
-(19:04:54) 
-(19:04:54) <Call e6Hg-HXTBf> Novy hovor (INVITE)
-(19:04:54) From: <sip:bob@147.175.160.186>;tag=IJaWUYg42
-(19:04:54) To: sip:mac@147.175.160.186
-(19:04:54) <Call e6Hg-HXTBf> Zvonim...
-(19:04:54) <Call e6Hg-HXTBf> Zvonim...
-(19:05:05) <Call e6Hg-HXTBf> Hovor odmietnuty
-(19:05:09) 
-(19:05:09) <> Register from mac@147.175.160.186 with contact 147.175.160.186:62714.
-(19:05:09) Registrar:
-(19:05:09) bob@147.175.160.186 -> 84.245.120.65:45582
-(19:05:09) mac@147.175.160.186 -> 147.175.160.186:62714
-(19:06:09) 
-(19:06:09) <> Register from mac@147.175.160.186 with contact 147.175.160.186:62714.
-(19:06:09) Registrar:
-(19:06:09) bob@147.175.160.186 -> 84.245.120.65:45582
-(19:06:09) mac@147.175.160.186 -> 147.175.160.186:62714
-(19:06:39) 
-(19:06:39) <> Register from mac@147.175.160.186 with contact 147.175.160.186:62714.
-(19:06:39) Registrar:
-(19:06:39) bob@147.175.160.186 -> 84.245.120.65:45582
-(19:06:39) mac@147.175.160.186 -> 147.175.160.186:62714
-(19:06:45) 
-(19:06:45) <> Register from mac@147.175.160.186 with contact 147.175.160.186:51337.
-(19:06:45) Registrar:
-(19:06:45) bob@147.175.160.186 -> 84.245.120.65:45582
-(19:06:45) mac@147.175.160.186 -> 147.175.160.186:51337
-(19:07:07) 
-(19:07:07) <> Register from mac@147.175.160.186 with contact 147.175.160.186:51337.
-(19:07:07) Registrar:
-(19:07:07) bob@147.175.160.186 -> 84.245.120.65:45582
-(19:07:07) mac@147.175.160.186 -> 147.175.160.186:51337
-(19:07:13) 
-(19:07:13) <> Register from mac@147.175.160.186 with contact 147.175.160.186:51337.
-(19:07:13) Registrar:
-(19:07:13) bob@147.175.160.186 -> 84.245.120.65:45582
-(19:07:13) mac@147.175.160.186 -> 147.175.160.186:51337
-(19:07:19) 
-(19:07:19) <> Register from bob@147.175.160.186 with contact 147.175.160.186.
-(19:07:19) Registrar:
-(19:07:19) bob@147.175.160.186 -> 147.175.160.186
-(19:07:19) mac@147.175.160.186 -> 147.175.160.186:51337
-(19:07:19) 
-(19:07:19) <> Register from bob@147.175.160.186 with contact 84.245.120.65:45582.
-(19:07:19) Registrar:
-(19:07:19) bob@147.175.160.186 -> 84.245.120.65:45582
-(19:07:19) mac@147.175.160.186 -> 147.175.160.186:51337
-(19:07:23) 
-(19:07:23) <Call GgekvOA74r> Novy hovor (INVITE)
-(19:07:23) From: <sip:bob@147.175.160.186>;tag=HLeibCrig
-(19:07:23) To: sip:mac@147.175.160.186
-(19:07:24) <Call GgekvOA74r> Zvonim...
-(19:07:26) <Call GgekvOA74r> Hovor zdvihnuty
-(19:07:27) <Call GgekvOA74r> Hovor zdvihnuty
-(19:07:27) <Call GgekvOA74r> Hovor zdvihnuty
-(19:07:29) <Call GgekvOA74r> Hovor zdvihnuty
-(19:07:31) 
-(19:07:31) <Call GgekvOA74r> Novy hovor (INVITE)
-(19:07:31) From: <sip:bob@147.175.160.186>;tag=HLeibCrig
-(19:07:31) To: <sip:mac@147.175.160.186>;tag=euDqTQm
-(19:07:31) <Call GgekvOA74r> Hovor zdvihnuty
-(19:07:45) 
-(19:07:45) <Call GgekvOA74r> Novy hovor (INVITE)
-(19:07:45) From: <sip:mac@147.175.160.186>;tag=euDqTQm
-(19:07:45) To: <sip:bob@147.175.160.186>;tag=HLeibCrig
-(19:07:45) <Call GgekvOA74r> Hovor zdvihnuty
-(19:07:46) 
-(19:07:46) <Call GgekvOA74r> Novy hovor (INVITE)
-(19:07:46) From: <sip:mac@147.175.160.186>;tag=euDqTQm
-(19:07:46) To: <sip:bob@147.175.160.186>;tag=HLeibCrig
-(19:07:46) <Call GgekvOA74r> Hovor zdvihnuty
-(19:08:32) <Call GgekvOA74r> Hovor ukonceny
-(19:09:04) 
-(19:09:04) <Call PrVYPbK2tq> Novy hovor (INVITE)
-(19:09:04) From: <sip:bob@147.175.160.186>;tag=U9o8Zib6o
-(19:09:04) To: sip:mac@147.175.160.186
-(19:09:04) <Call PrVYPbK2tq> Zvonim...
-(19:09:07) <Call PrVYPbK2tq> Hovor zdvihnuty
-(19:09:10) 
-(19:09:10) <Call PrVYPbK2tq> Novy hovor (INVITE)
-(19:09:10) From: <sip:bob@147.175.160.186>;tag=U9o8Zib6o
-(19:09:10) To: <sip:mac@147.175.160.186>;tag=WwXbdTz
-(19:09:10) <Call PrVYPbK2tq> Hovor zdvihnuty
-(19:09:28) <Call PrVYPbK2tq> Hovor ukonceny
+(19:26:36) 
+(19:26:36) <> Register from bob@147.175.160.186 with contact 147.175.160.186.
+(19:26:36) Registrar:
+(19:26:36) bob@147.175.160.186 -> 147.175.160.186
+(19:26:37) 
+(19:26:37) <> Register from bob@147.175.160.186 with contact 147.175.162.68:45582.
+(19:26:37) Registrar:
+(19:26:37) bob@147.175.160.186 -> 147.175.162.68:45582
+(19:26:39) 
+(19:26:39) <> Register from mac@147.175.160.186 with contact 147.175.160.186:63263.
+(19:26:39) Registrar:
+(19:26:39) bob@147.175.160.186 -> 147.175.162.68:45582
+(19:26:39) mac@147.175.160.186 -> 147.175.160.186:63263
+(19:26:58) 
+(19:26:58) <Call SybVCnfYv-> Novy hovor (INVITE)
+(19:26:58) From: <sip:bob@147.175.160.186>;tag=eRP7EIr~z
+(19:26:58) To: sip:mac@147.175.160.186
+(19:26:58) <Call SybVCnfYv-> Zvonim...
+(19:27:00) <Call SybVCnfYv-> Hovor prijaty
+(19:27:02) <Call SybVCnfYv-> Reinvite
+(19:27:02) <Call SybVCnfYv-> Reinvite Ok
+(19:27:10) <Call SybVCnfYv-> Reinvite
+(19:27:15) <Call SybVCnfYv-> Reinvite Ok
+(19:27:16) <Call SybVCnfYv-> Reinvite
+(19:27:16) <Call SybVCnfYv-> Reinvite Ok
+(19:27:19) <Call SybVCnfYv-> Hovor ukonceny
+(19:27:26) 
+(19:27:26) <Call -XVNl1Y0WZ> Novy hovor (INVITE)
+(19:27:26) From: <sip:bob@147.175.160.186>;tag=dMCe~uBDo
+(19:27:26) To: sip:mac@147.175.160.186
+(19:27:26) <Call -XVNl1Y0WZ> Zvonim...
+(19:27:27) <Call -XVNl1Y0WZ> Zvonenie zrusene
+(19:27:32) 
+(19:27:32) <Call ~aiC7XPkJ6> Novy hovor (INVITE)
+(19:27:32) From: <sip:bob@147.175.160.186>;tag=o-Qbc1rxc
+(19:27:32) To: sip:mac@147.175.160.186
+(19:27:33) <Call ~aiC7XPkJ6> Zvonim...
+(19:27:38) <Call ~aiC7XPkJ6> Zvonenie zrusene
+(19:28:24) 
+(19:28:24) <> Register from koberec@147.175.160.186 with contact 147.175.160.186.
+(19:28:24) Registrar:
+(19:28:24) mac@147.175.160.186 -> 147.175.160.186:63263
+(19:28:24) koberec@147.175.160.186 -> 147.175.160.186
+(19:28:25) 
+(19:28:25) <> Register from koberec@147.175.160.186 with contact 147.175.162.68:45582.
+(19:28:25) Registrar:
+(19:28:25) mac@147.175.160.186 -> 147.175.160.186:63263
+(19:28:25) koberec@147.175.160.186 -> 147.175.162.68:45582

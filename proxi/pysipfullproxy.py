@@ -89,7 +89,7 @@ rx_expires = re.compile("^Expires: (.*)$")
 recordroute = ""
 topvia = ""
 registrar = {}
-
+call_ids = {}
 
 # custom status codes
 STATUS_500 = "500 Serverova chyba"
@@ -352,10 +352,15 @@ class UDPHandler(BaseRequestHandler):
                 # log call in diary
                 callid = self.getCallId(data)
                 if callid:
-                    diary.info('')
-                    diary.info(f"<Call {callid}> Novy hovor (INVITE)")
-                    diary.info(matchLine(data, rx_from))
-                    diary.info(matchLine(data, rx_to))
+                    # reinvite
+                    if callid in call_ids:
+                        diary.info(f'<Call {callid}> Reinvite')
+                    # new call
+                    else:
+                        diary.info('')
+                        diary.info(f"<Call {callid}> Novy hovor (INVITE)")
+                        diary.info(matchLine(data, rx_from))
+                        diary.info(matchLine(data, rx_to))
                 
             else:
                 self.sendResponse(STATUS_480)
@@ -422,7 +427,11 @@ class UDPHandler(BaseRequestHandler):
             msg = 'VYBAVENE OK'
             cseq_method = matchLine(self.data, rx_cseq, 2)
             if cseq_method == 'INVITE':
-                diary.info(f"<Call {callid}> Hovor zdvihnuty")
+                if callid in call_ids:
+                    diary.info(f"<Call {callid}> Reinvite Ok")
+                else:
+                    diary.info(f"<Call {callid}> Hovor prijaty")
+                    call_ids[callid] = True # hovor prijaty = mame novy hovor
             elif cseq_method == 'BYE':
                 diary.info(f"<Call {callid}> Hovor ukonceny")
         elif code == '100': msg = 'Skusam'
@@ -435,6 +444,9 @@ class UDPHandler(BaseRequestHandler):
         elif code == '486':
             msg = 'Obsadene'
             diary.info(f"<Call {callid}> Hovor odmietnuty - obsadene")
+        elif code == '487':
+            msg = 'Zvonenie zrusene'
+            diary.info(f"<Call {callid}> Zvonenie zrusene")
         
         
         if len(origin) > 0:
