@@ -291,6 +291,7 @@ class UDPHandler(BaseRequestHandler):
         logging.debug("Client address: %s:%s" % self.client_address)
         logging.debug("Expires= %d" % expires)
         registrar[fromm]=[contact,self.socket,self.client_address,validity]
+        diary.info('')
         diary.info(f"<> Register from {fromm} with contact {contact}.")
         diary.info(f"Registrar:")
         for key in registrar.keys():
@@ -311,7 +312,8 @@ class UDPHandler(BaseRequestHandler):
         if len(destination) > 0:
             logging.info("--- destination %s" % destination)
             logging.info(f"--- is dest in registrar? {destination in registrar}")
-            logging.info(f"--- is dest valid? {self.checkValidity(destination)}")
+            if destination in registrar:
+                logging.info(f"--- is dest valid? {self.checkValidity(destination)}")
             if destination in registrar and self.checkValidity(destination):
                 socket,claddr = self.getSocketInfo(destination)
                 #self.changeRequestUri()
